@@ -28,4 +28,37 @@ public class Figurinha {
     joinColumns=@JoinColumn(name="figurinha_id"), 
     inverseJoinColumns=@JoinColumn(name="colecionador_id"))
     private Set<Colecionador> colecionadores;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getRaridade() {
+		return raridade;
+	}
+
+	public void setRaridade(String raridade) {
+		this.raridade = raridade;
+	}
+
+	public Set<Colecionador> getColecionadores() {
+		return colecionadores;
+	}
+
+	public void setColecionadores(Set<Colecionador> colecionadores) {
+		this.colecionadores = colecionadores;
+	}
+    
 }
