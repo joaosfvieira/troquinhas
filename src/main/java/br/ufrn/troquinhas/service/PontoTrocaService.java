@@ -17,12 +17,9 @@ public class PontoTrocaService {
 
     public PontoTroca addPontoTroca(PontoTroca p){ return pontoTrocaRepository.save(p); };
 
-    public ResponseEntity<PontoTroca> getPontoTrocaById(Integer id){
+    public Optional<PontoTroca> getPontoTrocaById(Integer id){
         Optional<PontoTroca> pontoTroca = pontoTrocaRepository.findById(id);
-        if(pontoTroca.isPresent()) {
-            return new ResponseEntity<>(pontoTroca.get(), HttpStatus.OK);
-        } else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return pontoTroca;
     };
 
     public List<PontoTroca> getAllPontoTrocas(){ return pontoTrocaRepository.findAll(); }

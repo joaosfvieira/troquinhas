@@ -17,12 +17,9 @@ public class FigurinhaService {
 
     public Figurinha addFigurinha(Figurinha f){ return figurinhaRepository.save(f); };
 
-    public ResponseEntity<Figurinha> getFigurinhaById(Integer id){
+    public Optional<Figurinha> getFigurinhaById(Integer id){
         Optional<Figurinha> figurinha = figurinhaRepository.findById(id);
-        if(figurinha.isPresent()) {
-            return new ResponseEntity<>(figurinha.get(), HttpStatus.OK);
-        } else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return figurinha;
     };
 
     public List<Figurinha> getAllFigurinhas(){ return figurinhaRepository.findAll(); }
