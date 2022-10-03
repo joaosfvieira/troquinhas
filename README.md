@@ -6,7 +6,7 @@
 - Possibilidade de usar geolocalização para automatizar a feature de presença no posto de troca.
 
 ### Autores
-- João de Souza (@joaosfvieira)
-- Paulo Andrade (@PauloFAndrade)
-- Rafael Fortunato (@Obelixlelul)
-- Rita Cruz (@rcchcz)
+- [João de Souza](https://github.com/joaosfvieira)
+- [Paulo Andrade](https://github.com/PauloFAndrade)
+- [Rafael Fortunato](https://github.com/Obelixlelul)
+- [Rita Cruz](https://github.com/rcchcz)
