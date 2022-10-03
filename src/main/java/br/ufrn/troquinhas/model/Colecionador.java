@@ -3,6 +3,8 @@ package br.ufrn.troquinhas.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,4 +27,10 @@ public class Colecionador {
     
     @OneToOne
     Contato contato;
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
+    @JoinTable(name="colecionador_figurinhas",
+    joinColumns=@JoinColumn(name="colecionador_id"), 
+    inverseJoinColumns=@JoinColumn(name="figurinha_id"))
+    private Set<Figurinha> figurinhas;
 }
