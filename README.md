@@ -1,5 +1,5 @@
 # Troquinhas
-### Aplicação web para troca de figurinhas da Copa do Mundo.</h3>
+### :book: Aplicação web para troca de figurinhas da Copa do Mundo :soccer:
 
 ### Implementações futuras
 - Spring scheduling task para remover a presença no posto de troca.
