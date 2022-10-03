@@ -17,6 +17,7 @@ public class Figurinha {
 
     @Column(name = "nome")
     private String nome;
+    
     @Column(name = "raridade")
     private String raridade;
 }

@@ -13,14 +13,14 @@ public class Contato {
 
     @Id
     @GeneratedValue
-    private Integer idContato;
+    private Integer id;
 
     @OneToOne
     private Colecionador colecionador;
 
-    @Column(name = "contato")
+    @Column(name = "contato", length=50)
     private String contato;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", length=50)
     private String descricao;
 }

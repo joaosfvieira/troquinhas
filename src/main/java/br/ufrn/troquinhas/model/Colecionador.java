@@ -20,7 +20,7 @@ public class Colecionador {
     @Column(length = 50)
     private String sobrenome;
     
-    @Column(length = 50)
+    @Column(unique=true, length = 50)
     private String email;
     
     @OneToOne
