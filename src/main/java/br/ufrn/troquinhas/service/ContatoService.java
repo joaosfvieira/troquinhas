@@ -18,12 +18,9 @@ public class ContatoService {
 
     public Contato addContato(Contato c){ return contatoRepository.save(c); };
 
-    public ResponseEntity<Contato> getContatoById(Integer id){
+    public Optional<Contato> getContatoById(Integer id){
         Optional<Contato> contato = contatoRepository.findById(id);
-        if(contato.isPresent()) {
-            return new ResponseEntity<>(contato.get(), HttpStatus.OK);
-        } else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return contato;
     };
 
     public List<Contato> getAllContatos(){ return contatoRepository.findAll(); }
