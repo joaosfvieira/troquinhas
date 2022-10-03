@@ -1,6 +1,6 @@
 package br.ufrn.troquinhas.service;
 
-import br.ufrn.troquinhas.model.Usuario;
+import br.ufrn.troquinhas.model.Colecionador;
 import br.ufrn.troquinhas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,16 +13,16 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public Usuario addUsuario(Usuario u){ return usuarioRepository.save(u); };
+    public Colecionador addUsuario(Colecionador u){ return usuarioRepository.save(u); };
 
-    public Optional<Usuario> getUsuarioById(Integer id){
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
-        return usuario;
+    public Optional<Colecionador> getUsuarioById(Integer id){
+        Optional<Colecionador> colecionador = usuarioRepository.findById(id);
+        return colecionador;
     };
 
-    public List<Usuario> getAllUsuarios(){ return usuarioRepository.findAll(); }
+    public List<Colecionador> getAllUsuarios(){ return usuarioRepository.findAll(); }
 
     public void removeUsuario(Integer id){ usuarioRepository.deleteById(id); }
 
-    public Usuario atualizaUsuario(Usuario u){ return usuarioRepository.save(u); }
+    public Colecionador atualizaUsuario(Colecionador u){ return usuarioRepository.save(u); }
 }

@@ -8,16 +8,21 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "usuario")
+public class Colecionador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "nome")
+    @Column(length = 50)
     private String nome;
-    @Column(name = "sobrenome")
+    
+    @Column(length = 50)
     private String sobrenome;
+    
+    @Column(length = 50)
+    private String email;
+    
     @OneToOne
-    private Contato contato;
+    Contato contato;
 }

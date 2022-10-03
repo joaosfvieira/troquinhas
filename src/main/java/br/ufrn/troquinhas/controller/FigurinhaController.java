@@ -1,7 +1,7 @@
 package br.ufrn.troquinhas.controller;
 
 import br.ufrn.troquinhas.model.Figurinha;
-import br.ufrn.troquinhas.model.Usuario;
+import br.ufrn.troquinhas.model.Colecionador;
 import br.ufrn.troquinhas.service.FigurinhaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

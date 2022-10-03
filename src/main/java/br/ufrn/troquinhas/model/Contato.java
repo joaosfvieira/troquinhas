@@ -16,7 +16,7 @@ public class Contato {
     private Integer idContato;
 
     @OneToOne
-    private Usuario usuario;
+    private Colecionador colecionador;
 
     @Column(name = "contato")
     private String contato;
