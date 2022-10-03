@@ -14,22 +14,22 @@ public class PontoTrocaController {
     @Autowired
     PontoTrocaService pontoTrocaService;
 
-    @PostMapping("/add")
+    @RequestMapping("/addPontoTroca")
     public PontoTroca addPontoTroca(@RequestBody PontoTroca p){ return pontoTrocaService.addPontoTroca(p); }
 
-    @GetMapping("/{id}")
+    @RequestMapping("/getPontoTrocaById/{id}")
     public PontoTroca getPontoTrocaById(@PathVariable Integer id){
         PontoTroca p = pontoTrocaService.getPontoTrocaById(id).getBody();
         return p;
     }
 
-    @GetMapping("/list")
+    @RequestMapping("/listaPontoTrocas")
     public List<PontoTroca> getAllPontoTroca(){ return pontoTrocaService.getAllPontoTrocas(); }
 
-    @DeleteMapping("/{id}")
+    @RequestMapping("/removePontoTroca/{id}")
     public void removePontoTroca(@PathVariable Integer id){ pontoTrocaService.removePontoTroca(id); };
 
-    @PutMapping("/{id}")
-    public void atualizaPontoTroca(@RequestBody PontoTroca p){ pontoTrocaService.atualizaPontoTroca(p); };
+//    @RequestMapping("/{id}")
+//    public void atualizaPontoTroca(@RequestBody PontoTroca p){ pontoTrocaService.atualizaPontoTroca(p); };
 }
 

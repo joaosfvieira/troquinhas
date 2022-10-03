@@ -21,7 +21,7 @@ public class UsuarioController {
     public String addUsuario(@ModelAttribute("usuario") Usuario usuario, Model model){
         Usuario novoUsuario = usuarioService.addUsuario(usuario);
         model.addAttribute("usuario", novoUsuario);
-        return "usuario/listaUsuarios"; }
+        return "redirect:/usuario/listaUsuarios"; }
 
     @RequestMapping("/getUsuarioById/{id}")
     public String getUsuarioById(@PathVariable Integer id, Model model){
@@ -30,13 +30,17 @@ public class UsuarioController {
         return "usuario/paginaUsuario";
     }
 
-    @RequestMapping("/listaUsuario")
-    public List<Usuario> getAllUsuarios(){ return usuarioService.getAllUsuarios(); }
+    @RequestMapping("/listaUsuarios")
+    public String getAllUsuarios(Model model){
+        List<Usuario> listaUsuarios = usuarioService.getAllUsuarios();
+        model.addAttribute("listaUsuarios", listaUsuarios);
+        return "usuario/listaUsuarios";
+    }
 
     @RequestMapping("/removeUsuario/{id}")
     public String removeUsuario(@PathVariable Integer id){
         usuarioService.removeUsuario(id);
-        return "usuario/listaUsuarios";
+        return "redirect:/usuario/listaUsuarios";
     };
 
 //    @RequestMapping("/{id}")
