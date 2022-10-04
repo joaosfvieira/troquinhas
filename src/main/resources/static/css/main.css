@@ -1,5 +1,6 @@
 * {
   font-family: Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 a {
@@ -14,8 +15,12 @@ a:hover {
 	text-decoration: none;
 }
 
+.delete-link {
+	color: #d90429;
+}
+
 .delete-link:hover {
-	color: #c32f27;
+	color: #ef6351;
 }
 
 .feedback-form {
