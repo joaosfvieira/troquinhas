@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/main.css">
     <title>Formulário Colecionador</title>
 </head>
 
 <body>
 
 <form action="#" th:action="@{/usuario/addUsuario}" th:object="${colecionador}" method="post">
-    <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" /></p>
+    <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" required/></p>
     <p>Sobrenome: <input type="text" th:field="*{sobrenome}" placeholder="Insira seu sobrenome" /></p>
-    <p>Sobrenome: <input type="text" th:field="*{email}" placeholder="Insira seu email" /></p>
+    <p>Sobrenome: <input type="text" th:field="*{email}" placeholder="Insira seu email" required/></p>
+    <p>Senha: <input type="password" th:field="*{senha}" placeholder="Insira sua senha" required/></p>
     <p><input type="submit" value="Adicionar" /></p>
 </form>
 <br><br>
