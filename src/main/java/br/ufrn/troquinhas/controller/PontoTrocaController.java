@@ -20,7 +20,7 @@ public class PontoTrocaController {
     @RequestMapping("/showForm")
     public String showForm(Model model) {
         model.addAttribute("pontotroca", new PontoTroca());
-        return "contato/formPontoTroca";
+        return "ponto-troca/formPontoTroca";
     }
 
     @RequestMapping("/addPontoTroca")

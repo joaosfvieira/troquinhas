@@ -10,10 +10,63 @@
 
 <h1><p th:text="' Olá, ' + ${colecionador.nome}"></h1>
 <p th:text="'ID: ' + ${colecionador.id} "></p>
-<p th:text="'Seu email é:  ' + ${colecionador.email}"></p>
+<p th:text="'Email:  ' + ${colecionador.email}"></p>
+<!--<p th:text="'Contato:  ' + ${colecionador.contato.contato}"></p>
+<p th:text="'Tipo contato:  ' + ${colecionador.contato.descricao}"></p>
+-->
+
+<p th:if="${colecionador.pontoTroca != null}" th:text="'Presente no Ponto de Trocas:  ' + ${colecionador.pontoTroca.nome}"></p>
 <br><br>
 
-<a href="/usuario/listaUsuarios">Ver lista de usuarios</a>
+<p>Figurinhas possuídas</p>
+<div th:if="${colecionador.getFigurinhasDesejadas() != null}">
+    <table>
+        <thead>
+        <tr>
+            <th th:text="Id"></th>
+            <th th:text="Nome"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="figurinha: ${figurinhasPossuidas}">
+            <td th:text="${figurinha.id}"></td>
+            <td th:text="${figurinha.nome}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${colecionador.getFigurinhasPossuidas() != null}">
+    <p>Figurinhas desejadas</p>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="Id"></th>
+            <th th:text="Nome"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="figurinha: ${figurinhasDesejadas}">
+            <td th:text="${figurinha.id}"></td>
+            <td th:text="${figurinha.nome}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<a href="/usuario/listaUsuarios">Ver lista de colecionadores</a>
+<a th:href="@{/usuario/marcarPresenca/{id}/{idPontoTroca} (id=${colecionador.id}, idPontoTroca=1)}">Marcar Presença</a>
+
+<form action="#" th:action="@{/usuario/marcarPresenca/{id}/{idPontoTroca}(id=${colecionador.id}, idPontoTroca=${colecionador.pontoTroca.getId()})}" method="post">
+    <p>Ponto de Troca:
+        <select th:field="*{colecionador.pontoTroca.id}">
+            <option th:each="pontoTroca : ${pontoTrocas}"
+                    th:text="${pontoTroca.nome}"
+                    th:value="${pontoTroca.id}">
+        </select></p>
+    <p><input type="submit" value="Adicionar" /></p>
+</form>
 
 </body>
 </html>

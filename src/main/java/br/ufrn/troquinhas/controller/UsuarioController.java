@@ -1,6 +1,9 @@
 package br.ufrn.troquinhas.controller;
 
 import br.ufrn.troquinhas.model.Colecionador;
+import br.ufrn.troquinhas.model.Figurinha;
+import br.ufrn.troquinhas.model.PontoTroca;
+import br.ufrn.troquinhas.service.PontoTrocaService;
 import br.ufrn.troquinhas.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RequestMapping("/usuario")
 @Controller
@@ -16,6 +20,8 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
+    @Autowired
+    PontoTrocaService pontoTrocaService;
 
     @RequestMapping("/showForm")
     public String showForm(Model model) {
@@ -32,6 +38,12 @@ public class UsuarioController {
     @RequestMapping("/getUsuarioById/{id}")
     public String getUsuarioById(@PathVariable Integer id, Model model){
         Colecionador c = usuarioService.getUsuarioById(id);
+        Set<Figurinha> listaFigurinhasPossuidas = usuarioService.getUsuarioById(id).getFigurinhasPossuidas();
+        Set<Figurinha> listaFigurinhasDesejadas = usuarioService.getUsuarioById(id).getFigurinhasDesejadas();
+        List<PontoTroca> listaPontoTrocas = pontoTrocaService.getAllPontoTrocas();
+        model.addAttribute("pontoTrocas",listaPontoTrocas);
+        model.addAttribute("figurinhasPossuidas", listaFigurinhasPossuidas);
+        model.addAttribute("figurinhasDesejadas", listaFigurinhasDesejadas);
         model.addAttribute("colecionador", c);
         return "usuario/paginaUsuario";
     }
@@ -47,7 +59,13 @@ public class UsuarioController {
     public String removeUsuario(@PathVariable Integer id){
         usuarioService.removeUsuario(id);
         return "redirect:/usuario/listaUsuarios";
-    };
+    }
+
+    @RequestMapping("/marcarPresenca/{id}/{idPontoTroca}")
+    public String marcarPresenca(@PathVariable("id") Integer id, @PathVariable("idPontoTroca") Integer idPontoTroca) {
+        usuarioService.marcarPresenca(id, idPontoTroca);
+        return "redirect:/usuario/listaUsuarios";
+    }
 
 //    @RequestMapping("/{id}")
 //    public void atualizaUsuario(@RequestBody Usuario u){ usuarioService.atualizaUsuario(u); };
