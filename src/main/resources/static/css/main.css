@@ -2,12 +2,28 @@
   font-family: Helvetica, sans-serif;
 }
 
+a {
+	color: #0d7503;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #72ce27;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.delete-link:hover {
+	color: #c32f27;
+}
+
 .feedback-form {
   width: 280px;
   margin: 100px auto;
   background-color: #fcfcfc;
   padding: 20px 50px 40px;
-  box-shadow: 1px 4px 10px 1px #aaa;
+  box-shadow: 1px 4px 10px 1px #70e000;
   font-family: Helvetica, sans-serif;
   border-radius: 10%;
 }

@@ -24,7 +24,7 @@
     <tr th:each="contato: ${contatos}">
         <td th:text="${contato.id}"></td>
         <td th:text="${contato.contato}"></td>
-        <td><a th:href="@{/contato/removeContato/{id}(id=${contato.id})}">Deletar</a></td>
+        <td><a th:href="@{/contato/removeContato/{id}(id=${contato.id})}" class="delete-link">Deletar</a></td>
     </tr>
     </tbody>
 </table>
