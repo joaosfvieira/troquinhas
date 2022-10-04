@@ -39,6 +39,17 @@
   background-color: #f3f3f3;
 }
 
+.comment-link {
+  display: block;
+  margin: 20px auto 0;
+  width: 150px;
+  height: 40px;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #72ce27;
+  text-decoration: none;
+}
+
 #feedback-form label {
   color: #777;
   font-size: 0.8em;
