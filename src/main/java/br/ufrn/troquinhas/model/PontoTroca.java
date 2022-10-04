@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -16,6 +17,9 @@ public class PontoTroca {
 
     @Column(name = "nome")
     private String nome;
+
+	@OneToMany(mappedBy="pontoTroca")
+	private Set<Colecionador> colecionadores;
 
 	public Integer getId() {
 		return id;

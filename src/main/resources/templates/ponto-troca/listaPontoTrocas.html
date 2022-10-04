@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pontos de Trocas</title>
+</head>
+<body>
+
+<p>Tabela PontoTrocas</p>
+<table>
+    <thead>
+    <tr>
+        <th th:text="Id"></th>
+        <th th:text="Nome"></th>
+        <th>Deletar</th>
+        <th>Atualizar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pontoTroca: ${listaPontoTrocas}">
+        <td th:text="${pontoTroca.id}"></td>
+        <td th:text="${pontoTroca.nome}"></td>
+        <td><a th:href="@{/pontotroca/removePontoTroca/{id}(id=${figurinha.id})}">Deletar</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br>
+
+<a href="/">Menu</a><br>
+<a href="/pontotroca/showForm">Adicionar novo Ponto de Troca</a>
+
+
+</body>
+</html>

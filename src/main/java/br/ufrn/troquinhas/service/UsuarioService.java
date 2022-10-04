@@ -15,9 +15,8 @@ public class UsuarioService {
 
     public Colecionador addUsuario(Colecionador u){ return usuarioRepository.save(u); };
 
-    public Optional<Colecionador> getUsuarioById(Integer id){
-        Optional<Colecionador> colecionador = usuarioRepository.findById(id);
-        return colecionador;
+    public Colecionador getUsuarioById(Integer id){
+        return usuarioRepository.findById(id).orElseThrow(() -> null);
     };
 
     public List<Colecionador> getAllUsuarios(){ return usuarioRepository.findAll(); }

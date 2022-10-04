@@ -16,6 +16,10 @@ public class Colecionador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+	@ManyToOne
+	@JoinColumn(name="pontos_troca_id", nullable=false)
+	private PontoTroca pontoTroca;
+
     @Column(length = 50)
     private String nome;
     
