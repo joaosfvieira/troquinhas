@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/main.css">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Index</title>
 </head>
 <body>
- <h2> SALVE PORRA </h2>
-
-<a href="/usuario/listaUsuarios"> Lista de Colecionadores </a>
-<br>
-<a href="/figurinha/listaFigurinhas"> Lista de Figurinhas </a>
-<br>
-<a href="/contato/listaContatos"> Lista de Contatos </a>
-<br>
-<a href="/pontotroca/listaPontoTrocas"> Lista de Pontos de Trocas </a>
-<br>
-
+<div th:replace="fragments/header :: header">...</div>
+<div class="content">
+    <h2> Troquinhas  </h2>
+    <a href="/usuario/listaUsuarios"> Lista de Colecionadores </a>
+    <br>
+    <a href="/figurinha/listaFigurinhas"> Lista de Figurinhas </a>
+    <br>
+    <a href="/contato/listaContatos"> Lista de Contatos </a>
+    <br>
+    <a href="/pontotroca/listaPontoTrocas"> Lista de Pontos de Trocas </a>
+    <br>
+</div>
 </body>
 </html>

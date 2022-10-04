@@ -15,6 +15,11 @@ a:hover {
 	text-decoration: none;
 }
 
+a:link, a:visited, a:active {
+  color: #72ce27;
+  text-decoration: none;
+}
+
 .delete-link {
 	color: #d90429;
 }
@@ -130,6 +135,8 @@ a:hover {
   color: #eee;
   font-weight: 700;
   box-shadow: 1px 4px 10px 1px #aaa;
+  vertical-align: middle;
+  padding: 5px;
   
   background: #0d7503; /* Old browsers */
   background: -moz-linear-gradient(left, #ffdf00 0%, #0d7503 100%); /* FF3.6-15 */
@@ -153,4 +160,37 @@ a:hover {
   background: -webkit-linear-gradient(left, #fff700 0%, #72ce27 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #fff700 0%, #72ce27 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#9f58a3',GradientType=1 ); /* IE6-9 */
+}
+
+table {
+  max-width: 500px;
+  padding: 10px;
+}
+
+.content {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
+
+h2 {
+  display: block;
+  border: none;
+  color: #eee;
+  font-weight: 700;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  vertical-align: middle;
+  padding: 5px;
+
+  background: #0d7503; /* Old browsers */
+  background: -moz-linear-gradient(left, #ffdf00 0%, #0d7503 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #ffdf00 0%, #0d7503 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ffdf00 0%, #0d7503 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#9f58a3',GradientType=1 ); /* IE6-9 */
+}
+
+.title {
+  border-radius: 25px;
+  text-align: center;
 }

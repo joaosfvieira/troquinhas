@@ -3,6 +3,7 @@ package br.ufrn.troquinhas.controller;
 import br.ufrn.troquinhas.model.Colecionador;
 import br.ufrn.troquinhas.model.Figurinha;
 import br.ufrn.troquinhas.model.PontoTroca;
+import br.ufrn.troquinhas.service.FigurinhaService;
 import br.ufrn.troquinhas.service.PontoTrocaService;
 import br.ufrn.troquinhas.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Optional;
 import java.util.Set;
-=======
->>>>>>> 7b99a14c3f1971a6e45cc3a027ca099c0b1d3b07
 
 @RequestMapping("/usuario")
 @Controller
@@ -25,6 +22,8 @@ public class UsuarioController {
     UsuarioService usuarioService;
     @Autowired
     PontoTrocaService pontoTrocaService;
+    @Autowired
+    FigurinhaService figurinhaService;
 
     @RequestMapping("/showForm")
     public String showForm(Model model) {
@@ -44,6 +43,8 @@ public class UsuarioController {
         Set<Figurinha> listaFigurinhasPossuidas = usuarioService.getUsuarioById(id).getFigurinhasPossuidas();
         Set<Figurinha> listaFigurinhasDesejadas = usuarioService.getUsuarioById(id).getFigurinhasDesejadas();
         List<PontoTroca> listaPontoTrocas = pontoTrocaService.getAllPontoTrocas();
+        List<Figurinha> figurinhas = figurinhaService.getAllFigurinhas();
+        model.addAttribute("figurinhas", figurinhas);
         model.addAttribute("pontoTrocas",listaPontoTrocas);
         model.addAttribute("figurinhasPossuidas", listaFigurinhasPossuidas);
         model.addAttribute("figurinhasDesejadas", listaFigurinhasDesejadas);
@@ -64,10 +65,23 @@ public class UsuarioController {
         return "redirect:/usuario/listaUsuarios";
     }
 
-    @RequestMapping("/marcarPresenca/{id}/{idPontoTroca}")
+    @RequestMapping("marcarPresenca/{id}/{idPontoTroca}")
     public String marcarPresenca(@PathVariable("id") Integer id, @PathVariable("idPontoTroca") Integer idPontoTroca) {
         usuarioService.marcarPresenca(id, idPontoTroca);
         return "redirect:/usuario/listaUsuarios";
+    }
+
+    @RequestMapping("/adicionarFigurinhaPossuida/{id}/{idFigurinhaPossuida}")
+    public String adicionarFigurinhaPossuida(@PathVariable("id") Integer id, @PathVariable("idFigurinhaPossuida") Integer idFigurinhaPossuida) {
+        usuarioService.adicionarFigurinhaPossuida(id, idFigurinhaPossuida);
+        System.out.println("Teste");
+        return "redirect:/usuario/getUsuarioById/{id}";
+    }
+
+    @RequestMapping("/adicionarFigurinhaDesejada/{id}/{idFigurinhaDesejada}")
+    public String adicionarFigurinhaDesejada(@PathVariable("id") Integer id, @PathVariable("idFigurinhaDesejada") Integer idFigurinhaDesejada) {
+        usuarioService.adicionarFigurinhaDesejada(id, idFigurinhaDesejada);
+        return "redirect:/usuario/getUsuarioById/{id}";
     }
 
 //    @RequestMapping("/{id}")

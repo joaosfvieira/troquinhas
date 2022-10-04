@@ -4,70 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/css/main.css">
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Usuário</title>
 </head>
 <body>
-
-<h1><p th:text="' Olá, ' + ${colecionador.nome}"></h1>
-<p th:text="'ID: ' + ${colecionador.id} "></p>
-<p th:text="'Email:  ' + ${colecionador.email}"></p>
-<!--<p th:text="'Contato:  ' + ${colecionador.contato.contato}"></p>
-<p th:text="'Tipo contato:  ' + ${colecionador.contato.descricao}"></p>
--->
-
-<p th:if="${colecionador.pontoTroca != null}" th:text="'Presente no Ponto de Trocas:  ' + ${colecionador.pontoTroca.nome}"></p>
-<br><br>
-
-<p>Figurinhas possuídas</p>
-<div th:if="${colecionador.getFigurinhasDesejadas() != null}">
-    <table>
-        <thead>
-        <tr>
-            <th th:text="Id"></th>
-            <th th:text="Nome"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="figurinha: ${figurinhasPossuidas}">
-            <td th:text="${figurinha.id}"></td>
-            <td th:text="${figurinha.nome}"></td>
-        </tr>
-        </tbody>
-    </table>
+<div th:replace="fragments/header :: header">...</div>
+<div class="content">
+    <h2><p th:text="' Colecionador: ' + ${colecionador.nome} + ' ' + ${colecionador.sobrenome}" ></h2>
+    <br>
+    <p th:text="'Email:  ' + ${colecionador.email}"></p>
+    <p th:if="${colecionador.contato != null}" th:text="'Contato: ' + ${colecionador.contato.contato}"></p>
+    <p th:if="${colecionador.pontoTroca != null}" th:text="'Presente no Ponto de Trocas:  ' + ${colecionador.pontoTroca.nome}"></p>
+    <br><br>
+    <p>Figurinhas possuídas</p>
+    <div th:if="${colecionador.getFigurinhasDesejadas() != null}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:text="Id"></th>
+                <th th:text="Nome"></th>
+                <th th:text="Raridade"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="figurinha: ${figurinhasPossuidas}">
+                <td th:text="${figurinha.id}"></td>
+                <td th:text="${figurinha.nome}"></td>
+                <td th:text="${figurinha.raridade}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div th:if="${colecionador.getFigurinhasPossuidas() != null}">
+        <p>Figurinhas desejadas</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:text="Id"></th>
+                <th th:text="Nome"></th>
+                <th th:text="Raridade"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="figurinha: ${figurinhasDesejadas}">
+                <td th:text="${figurinha.id}"></td>
+                <td th:text="${figurinha.nome}"></td>
+                <td th:text="${figurinha.raridade}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div th:if="${figurinhas != null }">
+        <p>Figurinhas</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:text="Id"></th>
+                <th th:text="Nome"></th>
+                <th th:text="Raridade"></th>
+                <th th:text="Possuída"></th>
+                <th th:text="Desejada"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="figurinha: ${figurinhas}">
+                <td th:text="${figurinha.id}"></td>
+                <td th:text="${figurinha.nome}"></td>
+                <td th:text="${figurinha.raridade}"></td>
+                <td><a th:href="@{/usuario/adicionarFigurinhaPossuida/{id}/{idFigurinha}(id=${colecionador.id}, idFigurinha=${figurinha.id})}">Possuída</a></td>
+                <td><a th:href="@{/usuario/adicionarFigurinhaDesejada/{id}/{idFigurinha}(id=${colecionador.id}, idFigurinha=${figurinha.id})}">Desejada</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <a href="/usuario/listaUsuarios">Ver lista de colecionadores</a>
+    <a th:href="@{/usuario/marcarPresenca/{id}/{idPontoTroca} (id=${colecionador.id}, idPontoTroca=1)}">Marcar Presença</a>
+    <br>
+    <div th:if="${colecionador.pontoTroca != null}">
+        <form action="#" th:action="@{/usuario/marcarPresenca/{id}/{idPontoTroca}(id=${colecionador.id}, idPontoTroca=${colecionador.pontoTroca.id})}" method="post">
+            <p>Ponto de Troca:
+                <select th:field="*{colecionador.pontoTroca.id}">
+                    <option th:each="pontoTroca : ${pontoTrocas}"
+                            th:text="${pontoTroca.nome}"
+                            th:value="${pontoTroca.id}">
+                </select></p>
+            <br>
+            <button type="submit" class="secundario-btn">Adicionar</button>
+        </form>
+    </div>
 </div>
-
-<div th:if="${colecionador.getFigurinhasPossuidas() != null}">
-    <p>Figurinhas desejadas</p>
-    <table>
-        <thead>
-        <tr>
-            <th th:text="Id"></th>
-            <th th:text="Nome"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="figurinha: ${figurinhasDesejadas}">
-            <td th:text="${figurinha.id}"></td>
-            <td th:text="${figurinha.nome}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<a href="/usuario/listaUsuarios">Ver lista de colecionadores</a>
-<a th:href="@{/usuario/marcarPresenca/{id}/{idPontoTroca} (id=${colecionador.id}, idPontoTroca=1)}">Marcar Presença</a>
-
-<form action="#" th:action="@{/usuario/marcarPresenca/{id}/{idPontoTroca}(id=${colecionador.id}, idPontoTroca=${colecionador.pontoTroca.getId()})}" method="post">
-    <p>Ponto de Troca:
-        <select th:field="*{colecionador.pontoTroca.id}">
-            <option th:each="pontoTroca : ${pontoTrocas}"
-                    th:text="${pontoTroca.nome}"
-                    th:value="${pontoTroca.id}">
-        </select></p>
-        <button type="submit" class="secundario-btn">Adicionar</button>
-</form>
-
 </body>
 </html>

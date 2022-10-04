@@ -1,7 +1,9 @@
 package br.ufrn.troquinhas.service;
 
 import br.ufrn.troquinhas.model.Colecionador;
+import br.ufrn.troquinhas.model.Figurinha;
 import br.ufrn.troquinhas.model.PontoTroca;
+import br.ufrn.troquinhas.repository.FigurinhaRepository;
 import br.ufrn.troquinhas.repository.PontoTrocaRepository;
 import br.ufrn.troquinhas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
     @Autowired
     PontoTrocaRepository pontoTrocaRepository;
+    @Autowired
+    FigurinhaRepository figurinhaRepository;
 
     public Colecionador addUsuario(Colecionador c){ return usuarioRepository.save(c); };
 
@@ -28,6 +32,28 @@ public class UsuarioService {
     public void removeUsuario(Integer id){ usuarioRepository.deleteById(id); }
 
     public Colecionador atualizaUsuario(Colecionador c){ return usuarioRepository.save(c); }
+
+    public Figurinha adicionarFigurinhaPossuida(Integer id, Integer idFigurinha) {
+        Optional<Figurinha> f = figurinhaRepository.findById(idFigurinha);
+        Optional<Colecionador> c = usuarioRepository.findById(id);
+        if(f.isPresent() && c.isPresent()) {
+            c.get().getFigurinhasPossuidas().add(f.get());
+            usuarioRepository.save(c.get());
+            return f.get();
+        }
+        return null;
+    }
+
+    public Figurinha adicionarFigurinhaDesejada(Integer id, Integer idFigurinha) {
+        Optional<Figurinha> f = figurinhaRepository.findById(idFigurinha);
+        Optional<Colecionador> c = usuarioRepository.findById(id);
+        if(f.isPresent() && c.isPresent()) {
+            c.get().getFigurinhasDesejadas().add(f.get());
+            usuarioRepository.save(c.get());
+            return f.get();
+        }
+        return null;
+    }
 
     public List<Colecionador> getAllColecionadoresWherePontoTrocaIdEqualsId(Integer id){ return usuarioRepository.getAllColecionadoresWherePontoTrocaIdEqualsId(id);}
 
