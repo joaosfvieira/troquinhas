@@ -13,12 +13,8 @@
 <form action="#" th:action="@{/usuario/addUsuario}" th:object="${colecionador}" method="post">
     <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" required/></p>
     <p>Sobrenome: <input type="text" th:field="*{sobrenome}" placeholder="Insira seu sobrenome" /></p>
-<<<<<<< HEAD
     <p>Email: <input type="text" th:field="*{email}" placeholder="Insira seu email" /></p>
-=======
-    <p>Sobrenome: <input type="text" th:field="*{email}" placeholder="Insira seu email" required/></p>
     <p>Senha: <input type="password" th:field="*{senha}" placeholder="Insira sua senha" required/></p>
->>>>>>> 7b99a14c3f1971a6e45cc3a027ca099c0b1d3b07
     <p><input type="submit" value="Adicionar" /></p>
 </form>
 <br><br>
