@@ -7,6 +7,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Getter
 @Setter
@@ -28,6 +30,9 @@ public class Colecionador {
     
     @Column(unique=true, length = 50)
     private String email;
+    
+    @JsonIgnore
+	private String senha;
     
     @OneToOne
     Contato contato;
