@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Optional;
 import java.util.Set;
+=======
+>>>>>>> 7b99a14c3f1971a6e45cc3a027ca099c0b1d3b07
 
 @RequestMapping("/usuario")
 @Controller

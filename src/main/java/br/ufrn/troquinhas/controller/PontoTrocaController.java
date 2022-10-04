@@ -1,6 +1,5 @@
 package br.ufrn.troquinhas.controller;
 
-import br.ufrn.troquinhas.model.Contato;
 import br.ufrn.troquinhas.model.PontoTroca;
 import br.ufrn.troquinhas.service.PontoTrocaService;
 import org.springframework.beans.factory.annotation.Autowired;
