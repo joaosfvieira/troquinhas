@@ -1,5 +1,6 @@
 package br.ufrn.troquinhas.controller;
 
+import br.ufrn.troquinhas.model.Colecionador;
 import br.ufrn.troquinhas.model.Figurinha;
 import br.ufrn.troquinhas.service.FigurinhaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public class FigurinhaController {
     @Autowired
     FigurinhaService figurinhaService;
+
+    @RequestMapping("/showForm")
+    public String showForm(Model model) {
+        model.addAttribute("figurinha", new Figurinha());
+        return "figurinha/formFigurinha";
+    }
 
     @RequestMapping("/addFigurinha")
     public String addFigurinha(@ModelAttribute("figurinha") Figurinha figurinha, Model model){

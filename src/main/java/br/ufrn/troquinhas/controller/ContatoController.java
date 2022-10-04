@@ -1,6 +1,7 @@
 package br.ufrn.troquinhas.controller;
 
 import br.ufrn.troquinhas.model.Contato;
+import br.ufrn.troquinhas.model.Figurinha;
 import br.ufrn.troquinhas.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public class ContatoController {
     @Autowired
     ContatoService contatoService;
+
+    @RequestMapping("/showForm")
+    public String showForm(Model model) {
+        model.addAttribute("contato", new Contato());
+        return "contato/formContato";
+    }
 
     @RequestMapping("/addContato")
     public String addContato(@ModelAttribute("contato") Contato contato, Model model){

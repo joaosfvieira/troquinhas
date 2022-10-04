@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuário</title>
 </head>
 <body>
+
+<h1><p th:text="' Olá, ' + ${colecionador.nome}"></h1>
+<p th:text="'ID: ' + ${colecionador.id} "></p>
+<p th:text="'Seu email é:  ' + ${colecionador.email}"></p>
+<br><br>
+
+<a href="/usuario/listaUsuarios">Ver lista de usuarios</a>
 
 </body>
 </html>

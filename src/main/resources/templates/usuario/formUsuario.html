@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Colecionador</title>
 </head>
+
 <body>
+
+<form action="#" th:action="@{/usuario/addUsuario}" th:object="${colecionador}" method="post">
+    <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" /></p>
+    <p>Sobrenome: <input type="text" th:field="*{sobrenome}" placeholder="Insira seu sobrenome" /></p>
+    <p>Sobrenome: <input type="text" th:field="*{email}" placeholder="Insira seu email" /></p>
+    <p><input type="submit" value="Adicionar" /></p>
+</form>
+<br><br>
+
+<a href="/usuario/listaUsuarios">Ver lista de colecionadores</a>
 
 </body>
 </html>

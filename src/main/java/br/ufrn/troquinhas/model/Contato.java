@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Contato {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @OneToOne

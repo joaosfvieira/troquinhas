@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed</title>
 </head>
 <body>
-$END$
+
+<p>Feed</p>
+<br>
+Natal Shopping
+<table>
+  <thead>
+  <tr>
+    <th th:text="Nome"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="colecionador: ${listaColecionadores1}">
+    <td th:text="${colecionador.nome}"></td>
+    <td th:text="${colecionador.pontoTroca.id}"></td>
+  </tr>
+  </tbody>
+</table>
+
+Partage Norte Shopping
+<table>
+  <thead>
+  <tr>
+    <th th:text="Nome"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="colecionador: ${listaColecionadores2}">
+    <td th:text="${colecionador.nome}"></td>
+    <td th:text="${colecionador.pontoTroca.id}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<br><br>
+
+<a href="/">Menu</a><br>
+
+
 </body>
 </html>

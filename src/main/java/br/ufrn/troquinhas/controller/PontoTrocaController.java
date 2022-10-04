@@ -1,5 +1,6 @@
 package br.ufrn.troquinhas.controller;
 
+import br.ufrn.troquinhas.model.Contato;
 import br.ufrn.troquinhas.model.PontoTroca;
 import br.ufrn.troquinhas.service.PontoTrocaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public class PontoTrocaController {
     @Autowired
     PontoTrocaService pontoTrocaService;
+
+    @RequestMapping("/showForm")
+    public String showForm(Model model) {
+        model.addAttribute("pontotroca", new PontoTroca());
+        return "contato/formPontoTroca";
+    }
 
     @RequestMapping("/addPontoTroca")
     public String addPontoTroca(@ModelAttribute("pontotroca") PontoTroca pontoTroca, Model model){

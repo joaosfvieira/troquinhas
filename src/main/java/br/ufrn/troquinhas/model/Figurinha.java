@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Figurinha {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "nome")

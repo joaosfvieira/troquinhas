@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colecionadores</title>
 </head>
 <body>
+
+<p>Tabela Colecionadores</p>
+<table>
+    <thead>
+    <tr>
+        <th th:text="Id"></th>
+        <th th:text="Nome"></th>
+        <th>Deletar</th>
+        <th>Atualizar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usuario: ${listaUsuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.nome}"></td>
+        <td><a th:href="@{/usuario/removeUsuario/{id}(id=${usuario.id})}">Deletar</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br>
+
+<a href="/">Menu</a><br>
+<a href="/usuario/showForm">Adicionar novo usuário</a>
+
 
 </body>
 </html>

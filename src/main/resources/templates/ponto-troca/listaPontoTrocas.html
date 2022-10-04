@@ -23,7 +23,7 @@
     <tr th:each="pontoTroca: ${listaPontoTrocas}">
         <td th:text="${pontoTroca.id}"></td>
         <td th:text="${pontoTroca.nome}"></td>
-        <td><a th:href="@{/pontotroca/removePontoTroca/{id}(id=${figurinha.id})}">Deletar</a></td>
+        <td><a th:href="@{/pontotroca/removePontoTroca/{id}(id=${pontoTroca.id})}">Deletar</a></td>
     </tr>
     </tbody>
 </table>

@@ -17,6 +17,12 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
+    @RequestMapping("/showForm")
+    public String showForm(Model model) {
+        model.addAttribute("colecionador", new Colecionador());
+        return "usuario/formUsuario";
+    }
+
     @RequestMapping("/addUsuario")
     public String addUsuario(@ModelAttribute("usuario") Colecionador colecionador, Model model){
         Colecionador novoUsuario = usuarioService.addUsuario(colecionador);
@@ -25,8 +31,8 @@ public class UsuarioController {
 
     @RequestMapping("/getUsuarioById/{id}")
     public String getUsuarioById(@PathVariable Integer id, Model model){
-        Optional<Colecionador> u = usuarioService.getUsuarioById(id);
-        model.addAttribute("usuario", u);
+        Colecionador c = usuarioService.getUsuarioById(id);
+        model.addAttribute("colecionador", c);
         return "usuario/paginaUsuario";
     }
 

@@ -24,4 +24,6 @@ public class UsuarioService {
     public void removeUsuario(Integer id){ usuarioRepository.deleteById(id); }
 
     public Colecionador atualizaUsuario(Colecionador u){ return usuarioRepository.save(u); }
+
+    public List<Colecionador> getAllColecionadoresWherePontoTrocaIdEqualsId(Integer id){ return usuarioRepository.getAllColecionadoresWherePontoTrocaIdEqualsId(id);}
 }
