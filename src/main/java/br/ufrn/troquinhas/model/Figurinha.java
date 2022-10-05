@@ -23,42 +23,14 @@ public class Figurinha {
     @Column(name = "raridade")
     private String raridade;
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
-    @JoinTable(name="colecionador_figurinhas",
-    joinColumns=@JoinColumn(name="figurinha_id"), 
-    inverseJoinColumns=@JoinColumn(name="colecionador_id"))
-    private Set<Colecionador> colecionadores;
+    @ManyToMany(mappedBy = "figurinhasAdquiridas")
+//    joinColumns=@JoinColumn(name="figurinha_id"),
+//    inverseJoinColumns=@JoinColumn(name="colecionador_id"))
+    private Set<Colecionador> colecionadoresPossuem;
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToMany(mappedBy = "figurinhasDesejadas")
+//    joinColumns=@JoinColumn(name="figurinha_id"),
+//    inverseJoinColumns=@JoinColumn(name="colecionador_id"))
+    private Set<Colecionador> colecionadoresDesejam;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getRaridade() {
-		return raridade;
-	}
-
-	public void setRaridade(String raridade) {
-		this.raridade = raridade;
-	}
-
-	public Set<Colecionador> getColecionadores() {
-		return colecionadores;
-	}
-
-	public void setColecionadores(Set<Colecionador> colecionadores) {
-		this.colecionadores = colecionadores;
-	}
-    
 }

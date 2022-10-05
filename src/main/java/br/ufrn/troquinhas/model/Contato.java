@@ -15,7 +15,7 @@ public class Contato {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "contato")
     private Colecionador colecionador;
 
     @Column(name = "contato", length=50)
@@ -24,36 +24,4 @@ public class Contato {
     @Column(name = "descricao", length=50)
     private String descricao;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Colecionador getColecionador() {
-		return colecionador;
-	}
-
-	public void setColecionador(Colecionador colecionador) {
-		this.colecionador = colecionador;
-	}
-
-	public String getNumeroOuEmail() {
-		return numeroOuEmail;
-	}
-
-	public void setNumeroOuEmail(String contato) {
-		this.numeroOuEmail = contato;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-    
 }

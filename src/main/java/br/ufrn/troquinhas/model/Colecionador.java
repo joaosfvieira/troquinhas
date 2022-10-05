@@ -12,15 +12,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Getter
 @Setter
-@Table(name = "usuario")
+@Table(name = "colecionador")
 public class Colecionador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name="pontos_troca_id")
-	private PontoTroca pontoTroca;
 
     @Column(length = 50)
     private String nome;
@@ -33,13 +29,18 @@ public class Colecionador {
     
     @JsonIgnore
 	private String senha;
-    
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name="pontos_troca_id")
+    private PontoTroca pontoTroca;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contato_id", referencedColumnName = "id")
     Contato contato;
     
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
     @JoinTable(name="colecionador_has_figurinhas",
-    joinColumns=@JoinColumn(name="colecionador_id"), 
+    joinColumns=@JoinColumn(name="colecionador_id"),
     inverseJoinColumns=@JoinColumn(name="figurinha_id"))
     private Set<Figurinha> figurinhasAdquiridas;
 
