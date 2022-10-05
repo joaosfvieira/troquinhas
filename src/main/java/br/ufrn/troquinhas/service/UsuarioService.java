@@ -33,11 +33,11 @@ public class UsuarioService {
 
     public Colecionador atualizaUsuario(Colecionador c){ return usuarioRepository.save(c); }
 
-    public Figurinha adicionarFigurinhaPossuida(Integer id, Integer idFigurinha) {
+    public Figurinha adicionarFigurinhaAdquirida(Integer id, Integer idFigurinha) {
         Optional<Figurinha> f = figurinhaRepository.findById(idFigurinha);
         Optional<Colecionador> c = usuarioRepository.findById(id);
         if(f.isPresent() && c.isPresent()) {
-            c.get().getFigurinhasPossuidas().add(f.get());
+            c.get().getFigurinhasAdquiridas().add(f.get());
             usuarioRepository.save(c.get());
             return f.get();
         }
@@ -60,7 +60,6 @@ public class UsuarioService {
     public Colecionador marcarPresenca(Integer id, Integer idPontoTroca) {
         Optional<Colecionador> c = usuarioRepository.findById(id);
         Optional<PontoTroca> p = pontoTrocaRepository.findById(idPontoTroca);
-        System.out.println(p.get().getNome());
         if(c.isPresent() && p.isPresent()){
             c.get().setPontoTroca(p.get());
             usuarioRepository.save(c.get());

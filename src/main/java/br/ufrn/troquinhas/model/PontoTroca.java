@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "pontos_troca")
 public class PontoTroca {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "nome")

@@ -24,7 +24,7 @@
         <tbody>
         <tr th:each="contato: ${contatos}">
             <td th:text="${contato.id}"></td>
-            <td th:text="${contato.contato}"></td>
+            <td th:text="${contato.numeroOuEmail}"></td>
             <td><a th:href="@{/contato/removeContato/{id}(id=${contato.id})}" class="delete-link">Deletar</a></td>
         </tr>
         </tbody>

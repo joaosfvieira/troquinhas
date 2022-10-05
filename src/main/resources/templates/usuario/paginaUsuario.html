@@ -14,10 +14,10 @@
     <h2><p th:text="' Colecionador: ' + ${colecionador.nome} + ' ' + ${colecionador.sobrenome}" ></h2>
     <br>
     <p th:text="'Email:  ' + ${colecionador.email}"></p>
-    <p th:if="${colecionador.contato != null}" th:text="'Contato: ' + ${colecionador.contato.contato}"></p>
+    <p th:if="${colecionador.contato != null}" th:text="'Contato: ' + ${colecionador.contato.numeroOuEmail}"></p>
     <p th:if="${colecionador.pontoTroca != null}" th:text="'Presente no Ponto de Trocas:  ' + ${colecionador.pontoTroca.nome}"></p>
     <br><br>
-    <p>Figurinhas possuídas</p>
+    <p>Figurinhas Adquiridas</p>
     <div th:if="${colecionador.getFigurinhasDesejadas() != null}">
         <table class="table">
             <thead>
@@ -28,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="figurinha: ${figurinhasPossuidas}">
+            <tr th:each="figurinha: ${figurinhasAdquiridas}">
                 <td th:text="${figurinha.id}"></td>
                 <td th:text="${figurinha.nome}"></td>
                 <td th:text="${figurinha.raridade}"></td>
@@ -37,8 +37,8 @@
         </table>
     </div>
     <br>
-    <div th:if="${colecionador.getFigurinhasPossuidas() != null}">
-        <p>Figurinhas desejadas</p>
+    <div th:if="${colecionador.getFigurinhasDesejadas() != null}">
+        <p>Figurinhas Desejadas</p>
         <table class="table">
             <thead>
             <tr>
@@ -65,7 +65,7 @@
                 <th th:text="Id"></th>
                 <th th:text="Nome"></th>
                 <th th:text="Raridade"></th>
-                <th th:text="Possuída"></th>
+                <th th:text="Adquirida"></th>
                 <th th:text="Desejada"></th>
             </tr>
             </thead>
@@ -74,7 +74,7 @@
                 <td th:text="${figurinha.id}"></td>
                 <td th:text="${figurinha.nome}"></td>
                 <td th:text="${figurinha.raridade}"></td>
-                <td><a th:href="@{/usuario/adicionarFigurinhaPossuida/{id}/{idFigurinha}(id=${colecionador.id}, idFigurinha=${figurinha.id})}">Possuída</a></td>
+                <td><a th:href="@{/usuario/adicionarFigurinhaAdquirida/{id}/{idFigurinha}(id=${colecionador.id}, idFigurinha=${figurinha.id})}">Adquirida</a></td>
                 <td><a th:href="@{/usuario/adicionarFigurinhaDesejada/{id}/{idFigurinha}(id=${colecionador.id}, idFigurinha=${figurinha.id})}">Desejada</a></td>
             </tr>
             </tbody>

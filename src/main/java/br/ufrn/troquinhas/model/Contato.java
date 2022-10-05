@@ -12,14 +12,14 @@ import javax.persistence.*;
 public class Contato {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne
     private Colecionador colecionador;
 
     @Column(name = "contato", length=50)
-    private String contato;
+    private String numeroOuEmail;
 
     @Column(name = "descricao", length=50)
     private String descricao;
@@ -40,12 +40,12 @@ public class Contato {
 		this.colecionador = colecionador;
 	}
 
-	public String getContato() {
-		return contato;
+	public String getNumeroOuEmail() {
+		return numeroOuEmail;
 	}
 
-	public void setContato(String contato) {
-		this.contato = contato;
+	public void setNumeroOuEmail(String contato) {
+		this.numeroOuEmail = contato;
 	}
 
 	public String getDescricao() {

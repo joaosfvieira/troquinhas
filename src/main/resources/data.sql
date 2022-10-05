@@ -1,0 +1,4 @@
+INSERT INTO `pontos_troca` VALUES (1, 'Natal Shopping'), (2, 'Partage Norte Shopping');
+INSERT INTO `usuario`(id, email, nome, senha, sobrenome) VALUES (1, 'joao@email', 'Joao', '123', 'Vieira'), (2, 'rafapp@gmail', 'Rafael', '123', 'Fortunato'),(3, 'rita@outlook', 'Rita', '123', 'Cruz'), (4, 'paulo@yahoo', 'Paulo', '123', 'Andrade');
+INSERT INTO `contatos` VALUES (1, '84991266475', 'whatsapp', 1), (2, '83988125129', 'telefone', 2), (3, '849612475', 'whatsapp', 4);
+INSERT INTO `figurinhas` VALUES (1, 'Ney Jr', 'Legend'), (2, 'Cristiano Ronaldo', 'Bordô'), (3, 'Halland', 'Normal'), (4, 'Teste', 'Normal'), (5, 'NovaFigura', 'Bordô');

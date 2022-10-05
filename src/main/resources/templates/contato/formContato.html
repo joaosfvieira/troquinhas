@@ -14,7 +14,7 @@
     <h1 class="header" style="color:#006400">TROQUINHAS</h1>
     <div>
         <form action="#" th:action="@{/contato/addContato}" th:object="${contato}" method="post">
-            <input type="text" th:field="*{contato}" placeholder="Insira seu contato" required/>
+            <input type="text" th:field="*{numeroOuEmail}" placeholder="Insira seu contato" required/>
             <input type="text" th:field="*{descricao}" placeholder="Insira a descricao" />
             <button type="submit" class="confirma-btn">Registrar</button>
             <a href="/contato/listaContato" class="comment-link" style="font-weight:lighter">Ver lista de contatos</a>

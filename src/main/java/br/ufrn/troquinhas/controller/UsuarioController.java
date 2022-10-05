@@ -40,13 +40,13 @@ public class UsuarioController {
     @RequestMapping("/getUsuarioById/{id}")
     public String getUsuarioById(@PathVariable Integer id, Model model){
         Colecionador c = usuarioService.getUsuarioById(id);
-        Set<Figurinha> listaFigurinhasPossuidas = usuarioService.getUsuarioById(id).getFigurinhasPossuidas();
+        Set<Figurinha> listaFigurinhasAdquiridas = usuarioService.getUsuarioById(id).getFigurinhasAdquiridas();
         Set<Figurinha> listaFigurinhasDesejadas = usuarioService.getUsuarioById(id).getFigurinhasDesejadas();
         List<PontoTroca> listaPontoTrocas = pontoTrocaService.getAllPontoTrocas();
         List<Figurinha> figurinhas = figurinhaService.getAllFigurinhas();
         model.addAttribute("figurinhas", figurinhas);
         model.addAttribute("pontoTrocas",listaPontoTrocas);
-        model.addAttribute("figurinhasPossuidas", listaFigurinhasPossuidas);
+        model.addAttribute("figurinhasAdquiridas", listaFigurinhasAdquiridas);
         model.addAttribute("figurinhasDesejadas", listaFigurinhasDesejadas);
         model.addAttribute("colecionador", c);
         return "usuario/paginaUsuario";
@@ -71,10 +71,9 @@ public class UsuarioController {
         return "redirect:/usuario/listaUsuarios";
     }
 
-    @RequestMapping("/adicionarFigurinhaPossuida/{id}/{idFigurinhaPossuida}")
-    public String adicionarFigurinhaPossuida(@PathVariable("id") Integer id, @PathVariable("idFigurinhaPossuida") Integer idFigurinhaPossuida) {
-        usuarioService.adicionarFigurinhaPossuida(id, idFigurinhaPossuida);
-        System.out.println("Teste");
+    @RequestMapping("/adicionarFigurinhaAdquirida/{id}/{idFigurinhaAdquirida}")
+    public String adicionarFigurinhaAdquirida(@PathVariable("id") Integer id, @PathVariable("idFigurinhaAdquirida") Integer idFigurinhaAdquirida) {
+        usuarioService.adicionarFigurinhaAdquirida(id, idFigurinhaAdquirida);
         return "redirect:/usuario/getUsuarioById/{id}";
     }
 
