@@ -1,4 +1,4 @@
-INSERT INTO `pontos_troca` VALUES (1, 'Natal Shopping'), (2, 'Partage Norte Shopping');
-INSERT INTO `contatos` VALUES (1, '84991266475', 'whatsapp'), (2, '83988125129', 'telefone'), (3, '849612475', 'whatsapp'), (4, '3512419199', 'fixo');
-INSERT INTO `colecionador`(id, email, nome, senha, sobrenome, contato_id) VALUES (1, 'joao@email', 'Joao', '123', 'Vieira',1), (2, 'rafapp@gmail', 'Rafael', '123', 'Fortunato',3),(3, 'rita@outlook', 'Rita', '123', 'Cruz',2), (4, 'paulo@yahoo', 'Paulo', '123', 'Andrade',4);
-INSERT INTO `figurinhas` VALUES (1, 'Ney Jr', 'Legend'), (2, 'Cristiano Ronaldo', 'Bordô'), (3, 'Halland', 'Normal'), (4, 'Teste', 'Normal'), (5, 'NovaFigura', 'Bordô');
+INSERT INTO `pontos_troca`(nome) VALUES ('Natal Shopping'), ('Partage Norte Shopping');
+INSERT INTO `contatos`(contato, descricao) VALUES ('84991266475', 'whatsapp'), ('83988125129', 'telefone'), ('849612475', 'whatsapp'), ('3512419199', 'fixo');
+INSERT INTO `colecionador`(email, nome, senha, sobrenome, contato_id, pontos_troca_id) VALUES ('joao@email', 'Joao', '123', 'Vieira',1, 2), ('rafapp@gmail', 'Rafael', '123', 'Fortunato',3, 1),('rita@outlook', 'Rita', '123', 'Cruz', null, 1), ('paulo@yahoo', 'Paulo', '123', 'Andrade',4, 2), ('sofia@email', 'Sofia', '123', 'Nóbrega', null, 1);
+INSERT INTO `figurinhas`(nome, raridade) VALUES ('Ney Jr', 'Legend'), ('Cristiano Ronaldo', 'Bordô'), ('Halland', 'Normal'), ('Teste', 'Normal'), ('NovaFigura', 'Bordô');

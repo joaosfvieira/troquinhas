@@ -9,16 +9,85 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<div class="content">
-    <h2> Troquinhas  </h2>
-    <a href="/usuario/listaUsuarios"> Lista de Colecionadores </a>
-    <br>
-    <a href="/figurinha/listaFigurinhas"> Lista de Figurinhas </a>
-    <br>
-    <a href="/contato/listaContatos"> Lista de Contatos </a>
-    <br>
-    <a href="/pontotroca/listaPontoTrocas"> Lista de Pontos de Trocas </a>
-    <br>
-</div>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Consiga as figurinhas que faltam no seu álbum</h1>
+                    <p class="lead text-white-50 mb-4">Crie seu perfil, cadastre suas figurinhas e procure por pontos de troca próximos a você</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-outline-light btn-lg px-4 me-sm-3" href="#pontotroca">Pontos de Troca</a>
+                        <a class="btn btn-outline-light btn-lg px-4" href="/usuario/showForm">Crie seu Perfil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="bg-light py-5 border-bottom" id="pontotroca">
+    <div class="container px-5 my-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Pontos de Troca</h2>
+            <p class="lead mb-0">Espaços disponíveis para trocar suas figurinhas</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6 col-xl-4">
+                <div class="card mb-5 mb-xl-0">
+                    <div class="card-body p-5">
+                        <div class="mb-3">
+                            <span class="display-6 fw-bold">Natal Shopping</span>
+                            <span class="text-muted">Próximo a entrada</span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th th:text="Nome"></th>
+                                <th th:text="Detalhes"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="colecionador: ${listaColecionadores1}">
+                                <td th:text="${colecionador.nome}"></td>
+                                <td><a th:href="@{/usuario/getUsuarioById/{id}(id=${colecionador.id})}">Ver figurinhas</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-4">
+                <div class="card mb-5 mb-xl-0">
+                    <div class="card-body p-5">
+                        <div class="mb-3">
+                            <span class="display-6 fw-bold">Norte Shopping</span>
+                            <span class="text-muted">Segundo andar</span>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th th:text="Nome"></th>
+                                <th th:text="Detalhes"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="colecionador: ${listaColecionadores2}">
+                                <td th:text="${colecionador.nome}"></td>
+                                <td><a th:href="@{/usuario/getUsuarioById/{id}(id=${colecionador.id})}">Ver figurinhas</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments/footer :: footer">...</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

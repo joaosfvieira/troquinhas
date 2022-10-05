@@ -55,7 +55,9 @@ public class UsuarioService {
         return null;
     }
 
-    public List<Colecionador> getAllColecionadoresWherePontoTrocaIdEqualsId(Integer id){ return usuarioRepository.getAllColecionadoresWherePontoTrocaIdEqualsId(id);}
+    public List<Colecionador> getAllColecionadoresWherePontoTrocaIdEqualsId(Integer id){
+        return usuarioRepository.getAllColecionadoresWherePontoTrocaIdEqualsId(id);
+    }
 
     public Colecionador marcarPresenca(Integer id, Integer idPontoTroca) {
         Optional<Colecionador> c = usuarioRepository.findById(id);
